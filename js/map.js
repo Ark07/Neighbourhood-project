@@ -1,10 +1,5 @@
 var map;
 
-// Create a "highlighted location" marker color for when the user
-// mouses over the marker.
-
-var highlightedIcon = "image/food.png";
-
 // Create a new blank array for all the listing markers.
 var markers = []
 
@@ -163,13 +158,16 @@ var Viewmodel = function() {
 
 
     var largeInfowindow = new google.maps.InfoWindow();
+    
+    // Create a "highlighted location" marker color for when the user
+    // mouses over the marker.
 
-
+    var highlightedIcon = "image/food.png";
+    // setting default marker color 
     var defaultIcon = makeMarkerIcon('C119FF');
-
+    
     self.locationList().forEach(function(item) {
-        //$('#places').append('<tr><'+item.title+'</tr>')
-        console.log(item.title)
+           console.log(item.title)
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
             position: item.location,
@@ -181,8 +179,7 @@ var Viewmodel = function() {
 
         item.marker = marker;
         // Push the marker to our array of markers.
-
-        markers.push(marker);
+         markers.push(marker);
         //enabling info window on clicking
         marker.addListener('click', function() {
             populateInfoWindow(item.marker, largeInfowindow);
@@ -212,14 +209,11 @@ var Viewmodel = function() {
         }, 1000);
     }
 
-
-
     // This function populates the infowindow when the marker is clicked. We'll only allow
     // one infowindow which will open at the marker that is clicked, and populate based
     // on that markers position.
 
     function populateInfoWindow(marker, infowindow) {
-
 
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
@@ -257,7 +251,6 @@ var Viewmodel = function() {
             }
             // Use streetview service to get the closest streetview image within
 
-
             // wikipedia
             var wikiURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&format=json&callback=wikiCallback';
 
@@ -279,7 +272,6 @@ var Viewmodel = function() {
                     infowindow.open(map, marker);
 
                 }
-
             })
 
         }

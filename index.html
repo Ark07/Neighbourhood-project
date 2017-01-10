@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>PROJECT MAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id=container>
+      <div>
+            <img class="hamburgerIcon" src="image/icon.png" data-bind="click:displayIcon" alt=icon>
+        </div>
+        <div class=options-box data-bind="visible:display">
+            <div>
+                <h2>FOODIE HUB </h2>
+            </div>
+            <hr>
+            <div>
+                <h4><span>Search for our nearest stores now!!</span></h4>
+                <input type="text" placeholder="location" data-bind="value:query,valueUpdate: 'afterkeydown'">
+                <hr>
+                <div data-bind="foreach:filteredItems">
+                    <li data-bind="text:title,click:$parent.clickEvent"></li>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <div id="map"></div>
+
+    <script defer src="js/jQuery.min.js"></script>
+    <script defer src="js/knockout.js"></script>
+    <script src="js/map.js"></script>
+    <script>
+    //Display alert message when an error occur to googleMaps
+    googleError = function() {
+        alert('ERROR.failed to load google map.Try again');
+    };
+    </script>
+    <script async defer onerror ="googleError()" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyDGE-3rjOfo4NoVeAG1pC8q9-ef0ODxbNo&v=3&callback=initMap">
+    </script>
+
+
+</body>
+
+</html>
